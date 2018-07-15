@@ -14,7 +14,7 @@ export class ContactListComponent implements OnInit {
   contactLists: IContact[];
   errorMessage: string;
 
-  constructor(private _contactService: ContactlistService, private _router: Router) { }
+  constructor(private _contactService: ContactlistService, private _router: Router,private _route: ActivatedRoute,) { }
 
   ngOnInit(): void {
      // this.contacts = this._contactService.getContactsNative();
@@ -22,9 +22,9 @@ export class ContactListComponent implements OnInit {
                                                                      (error) => this.errorMessage = error);
   }
   
-  editContact(): void {
-    console.log("edit")
-     this._router.navigate(['edit']);
+  editContact(contact: IContact): void {
+    console.log(contact)
+     this._router.navigate(['edit'], { queryParams: { "contact": contact } }); 
   }
 
 }

@@ -1,21 +1,22 @@
 <div class="container">
 <div class="col-md-5">
+
     <div class="form-area">  
-        <form role="form">
+        <form role="form" #form="ngForm" novalidate>
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Edit Contact Info</h3>
     				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contact.name" >
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required ngModel [(ngModel)] = "contact.email">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required [(ngModel)] = "contact.tel">
 					</div>
 					
                     <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Address" maxlength="140" rows="7"></textarea>
+                    <textarea class="form-control" type="textarea" id="message" placeholder="Address" name="address" maxlength="140" rows="7" ngModel></textarea>
                         <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
                     </div>
             
