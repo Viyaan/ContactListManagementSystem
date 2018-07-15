@@ -11,19 +11,22 @@ import {LoginComponent} from './login/login.component';
 import { InvalidloginComponent } from './login/invalidlogin/invalidlogin.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import {ContactlistService} from './contact-list/contactlist.service';
+import { EditcontactComponent } from './editcontact/editcontact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InvalidloginComponent,
-    ContactListComponent
+    ContactListComponent,
+    EditcontactComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'viewContacts', component: ContactListComponent},
       {path: 'invalidPassword', component: InvalidloginComponent},
+      {path: 'edit', component: EditcontactComponent},
       {path: '', redirectTo: 'login', pathMatch: 'full'},
 
     ])
