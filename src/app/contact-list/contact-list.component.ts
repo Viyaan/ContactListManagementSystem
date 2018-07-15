@@ -10,13 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts: Observable<IContact[]>;
+  contacts: IContact[];
   errorMessage: string;
 
   constructor(private _contactService: ContactlistService) { }
 
   ngOnInit(): void {
-    this.contacts = this._contactService.getContactsHttp();
+    this.contacts = this._contactService.getContactsNative();
+    
+    
   }
 
 }
