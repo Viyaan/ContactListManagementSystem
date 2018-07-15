@@ -7,7 +7,10 @@
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Edit Contact Info</h3>
     				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contactName" >
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contactName"  #firstName="ngModel">
+						<div class ="alert alert-danger" *ngIf ="firstName.invalid">
+						First name is required
+						</div>
 					</div>
 					<div class="col-sm-100">
 						<img src="http://demos.themes.guide/bodeo/assets/images/users/m101.jpg"  class="img-rounded" alt="Cinque Terre">
