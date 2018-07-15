@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="container callbackground">
 <div class="col-md-5">
 
     <div class="form-area">  
@@ -6,13 +7,13 @@
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Edit Contact Info</h3>
     				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contact.name" >
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contactName" >
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required ngModel [(ngModel)] = "contact.email">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required ngModel [(ngModel)] = "contactEmail">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required [(ngModel)] = "contact.tel">
+						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required [(ngModel)] = "contactTel">
 					</div>
 					
                     <div class="form-group">
@@ -25,3 +26,5 @@
     </div>
 </div>
 </div>
+
+ 

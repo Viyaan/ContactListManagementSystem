@@ -21,10 +21,10 @@ export class ContactListComponent implements OnInit {
     this.contactLists = this._contactService.getContactsHttp().subscribe((contacts) => this.contactLists = contacts, 
                                                                      (error) => this.errorMessage = error);
   }
-  
+
   editContact(contact: IContact): void {
     console.log(contact)
-     this._router.navigate(['edit'], { queryParams: { "contact": contact } }); 
+this._router.navigate(['edit'], { queryParams: { "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name} }); 
   }
 
 }

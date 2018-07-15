@@ -8,7 +8,9 @@ import {IContact} from '../contact-list/contact';
   styleUrls: ['./editcontact.component.css']
 })
 export class EditcontactComponent implements OnInit {
-   public contact: IContact;
+   public contactTel;
+  public contactEmail;
+  public contactName;
 
  constructor(private _route: ActivatedRoute, private _router: Router) {}
 
@@ -17,8 +19,9 @@ export class EditcontactComponent implements OnInit {
     this._route
       .queryParams
       .subscribe((params) => {
-        this.contact = params['contact'];
-        console.log("param" +this.contact.email);
+        this.contactTel = params['contactTel'];
+         this.contactEmail = params['contactEmail'];
+        this.contactName = params['contactName'];
 
       })
   }

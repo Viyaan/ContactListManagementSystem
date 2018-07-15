@@ -26,7 +26,7 @@ import { EditcontactComponent } from './editcontact/editcontact.component';
       {path: 'login', component: LoginComponent},
       {path: 'viewContacts', component: ContactListComponent},
       {path: 'invalidPassword', component: InvalidloginComponent},
-      {path: 'edit', component: EditcontactComponent},
+      {path: 'edit', component: EditcontactComponent,pathMatch: 'full'},
       {path: '', redirectTo: 'login', pathMatch: 'full'},
 
     ])
