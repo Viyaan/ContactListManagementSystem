@@ -17,7 +17,7 @@
 					</div>
 					<br>
 					<div class="form-group">
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required  [(ngModel)] = "contactEmail" pattern ="[a-zA-Z0-10.%+-]+@[a-z0-9.-]+.[a-z]{3}" #email="ngModel">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required  [(ngModel)] = "contactEmail" pattern ="[a-zA-Z0-10.%+-]+@[a-z0-9.-]+.[a-z]{2,5}" #email="ngModel">
 						<div class ="alert alert-danger" *ngIf ="email.invalid">
 						Enter valid email
 						</div>
