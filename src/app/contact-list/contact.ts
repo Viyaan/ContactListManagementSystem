@@ -6,5 +6,13 @@ export class IContact {
   add: string;
   faceId: string;
 
-   constructor(id, name, email, tel, add, faceId) {}
+   constructor(id, name, email, tel, add, faceId) {
+   
+   this.id=id;
+     this.name=name;
+     this.email=email;
+     this.tel=tel;
+     this.email=email;
+     this.faceId=faceId;
+   }
 }
