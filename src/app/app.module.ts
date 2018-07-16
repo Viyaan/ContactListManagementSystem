@@ -12,6 +12,7 @@ import { InvalidloginComponent } from './login/invalidlogin/invalidlogin.compone
 import { ContactListComponent } from './contact-list/contact-list.component';
 import {ContactlistService} from './contact-list/contactlist.service';
 import { EditcontactComponent } from './editcontact/editcontact.component';
+import {UserformService} from './editcontact/services/userform.service'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { EditcontactComponent } from './editcontact/editcontact.component';
 
     ])
   ],
-  providers: [ContactlistService],
+  providers: [ContactlistService,UserformService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

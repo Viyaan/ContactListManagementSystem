@@ -28,13 +28,15 @@ export class ContactlistService {
         'name': 'Terrence S. Hatfield',
         'tel': '651-603-1723',
         'email': 'TerrenceSHatfield@rhyta.com',
-        'faceId': 1
+        "add":"address",
+        'faceId': ""
       }, {
         'id': 2,
         'name': 'Chris M. Manning',
         'tel': '513-307-5859',
         'email': 'ChrisMManning@dayrep.com',
-        'faceId': 2
+         "add":"address",
+        'faceId': ""
       }
     ]
   }

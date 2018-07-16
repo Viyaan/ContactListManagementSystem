@@ -3,5 +3,8 @@ export class IContact {
   name: string;
   email: string;
   tel: string;
-  faceId: number;
+  add: string;
+  faceId: string;
+
+   constructor(id, name, email, tel, add, faceId) {}
 }

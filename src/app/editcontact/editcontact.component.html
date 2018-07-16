@@ -3,7 +3,7 @@
 <div class="col-sm-8">
 
     <div class="form-area">  
-        <form role="form" #form="ngForm" novalidate>
+        <form role="form" #form="ngForm" novalidate (submit)="editUser(form)">
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Edit Contact Info</h3>
     				<div class="form-group">
@@ -31,7 +31,7 @@
                         <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
                     </div>
             
-        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Save Contact</button>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Save Contact</button>
         </form>
     </div>
 </div>
