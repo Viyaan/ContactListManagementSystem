@@ -12,7 +12,7 @@ export class IContact {
      this.name=name;
      this.email=email;
      this.tel=tel;
-     this.email=email;
+     this.add=add;
      this.faceId=faceId;
    }
 }

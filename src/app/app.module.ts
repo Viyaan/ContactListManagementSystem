@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 import {AppComponent} from './app.component';
@@ -12,7 +13,8 @@ import { InvalidloginComponent } from './login/invalidlogin/invalidlogin.compone
 import { ContactListComponent } from './contact-list/contact-list.component';
 import {ContactlistService} from './contact-list/contactlist.service';
 import { EditcontactComponent } from './editcontact/editcontact.component';
-import {UserformService} from './editcontact/services/userform.service'
+import {UserformService} from './editcontact/services/userform.service';
+import { CreatecontactComponent } from './createcontact/createcontact.component'
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import {UserformService} from './editcontact/services/userform.service'
     LoginComponent,
     InvalidloginComponent,
     ContactListComponent,
-    EditcontactComponent
+    EditcontactComponent,
+    CreatecontactComponent
   ],
   imports: [
-    BrowserModule, CommonModule, FormsModule, HttpModule, RouterModule.forRoot([
+    BrowserModule, CommonModule, FormsModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'viewContacts', component: ContactListComponent},
       {path: 'invalidPassword', component: InvalidloginComponent},
       {path: 'edit', component: EditcontactComponent,pathMatch: 'full'},
+      {path: 'add', component: CreatecontactComponent},
       {path: '', redirectTo: 'login', pathMatch: 'full'},
 
     ])

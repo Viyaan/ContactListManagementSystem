@@ -27,4 +27,5 @@ export class ContactListComponent implements OnInit {
 this._router.navigate(['edit'], { queryParams: { "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name} }); 
   }
 
+
 }

@@ -4,8 +4,12 @@
 <div class="card bg-dark text-white bg-primary mb-3">
   <div class="card-header">
    <h2>Contact List</h2> 
+        <button class="contact-action btn" [routerLink]= "['/add']">
+								<i class="glyphicon glyphicon-plus"></i> Create User
+							</button>
   </div>
   </div>
+
     <div class="card card-default" id="card_contacts">
         <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
             <ul class="list-group pull-down" id="contact-list">
