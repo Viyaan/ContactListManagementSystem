@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IContact} from './contact';
 import 'rxjs/Rx';
@@ -9,16 +9,41 @@ export class ContactlistService {
 
   private _contactListUrl = "http://api-contact-manager.herokuapp.com/contacts";
 
-  constructor(private _http: Http) {}
+  private _deleteUrl = '';
+
+  headers: Headers;
+  options: RequestOptions;
+
+  constructor(private _http: Http) {
+
+    this.headers = new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'q=0.8;application/json;q=0.9'
+    });
+    this.options = new RequestOptions({headers: this.headers});
+  }
 
   getContactsHttp(): Observable<IContact[]> {
-     return this._http.get(this._contactListUrl).map((response: Response) => <IContact[]>response.json()).catch(this.handleError)
+    return this._http.get(this._contactListUrl).map((response: Response) => <IContact[]>response.json()).catch(this.handleError)
   }
 
   private handleError(error: Response) {
     return Observable.throw(error.json().error || "Server Error");
   }
 
+
+  deleteContactWithId(key: string, val: number): Observable<any> {
+    return this._http
+      .delete(this._deleteUrl + "/?" + key + "=" + val, this.options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
 
 
   getContactsNative(): IContact[] {
@@ -28,14 +53,14 @@ export class ContactlistService {
         'name': 'Terrence S. Hatfield',
         'tel': '651-603-1723',
         'email': 'TerrenceSHatfield@rhyta.com',
-        "add":"address",
+        "add": "address",
         'faceId': ""
       }, {
         'id': 2,
         'name': 'Chris M. Manning',
         'tel': '513-307-5859',
         'email': 'ChrisMManning@dayrep.com',
-         "add":"address",
+        "add": "address",
         'faceId': ""
       }
     ]
