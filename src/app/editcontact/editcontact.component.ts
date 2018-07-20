@@ -10,10 +10,11 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./editcontact.component.css']
 })
 export class EditcontactComponent implements OnInit {
-   public contactTel;
+  public contactTel;
   public contactEmail;
   public contactName;
   public contactAdd;
+  public face;
   
   public contact: IContact
 
@@ -28,7 +29,8 @@ export class EditcontactComponent implements OnInit {
          this.contactEmail = params['contactEmail'];
         this.contactName = params['contactName'];
         this.contactAdd = params['address'];
-        this.contact = new IContact('',this.contactName,this.contactEmail,this.contactTel,this.contactAdd,'');
+        this.face = params['face'];
+        this.contact = new IContact('',this.contactName,this.contactEmail,this.contactTel,this.contactAdd,this.face);
 
       }) 
   } 

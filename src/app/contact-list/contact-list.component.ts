@@ -27,7 +27,7 @@ export class ContactListComponent implements OnInit {
   
 
   editContact(contact: IContact): void {
-    this._router.navigate(['edit'], { queryParams: { "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name, "address": contact.add} }); 
+    this._router.navigate(['edit'], { queryParams: { "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name, "address": contact.add,"face":contact.faceId} }); 
   }
 
   removeContact(contact: IContact):void{
