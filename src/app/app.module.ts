@@ -15,6 +15,7 @@ import {ContactlistService} from './contact-list/contactlist.service';
 import { EditcontactComponent } from './editcontact/editcontact.component';
 import {UserformService} from './editcontact/services/userform.service';
 import { CreatecontactComponent } from './createcontact/createcontact.component'
+import { PagerService } from './contact-list/pager.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { CreatecontactComponent } from './createcontact/createcontact.component'
 
     ])
   ],
-  providers: [ContactlistService,UserformService],
+  providers: [ContactlistService,UserformService,PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
