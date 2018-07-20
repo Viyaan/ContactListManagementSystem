@@ -13,6 +13,7 @@ export class EditcontactComponent implements OnInit {
    public contactTel;
   public contactEmail;
   public contactName;
+  public contactAdd;
   
   public contact: IContact
 
@@ -26,9 +27,10 @@ export class EditcontactComponent implements OnInit {
         this.contactTel = params['contactTel'];
          this.contactEmail = params['contactEmail'];
         this.contactName = params['contactName'];
-        this.contact = new IContact('',this.contactName,this.contactEmail,this.contactTel,'','');
+        this.contactAdd = params['address'];
+        this.contact = new IContact('',this.contactName,this.contactEmail,this.contactTel,this.contactAdd,'');
 
-      })
+      }) 
   } 
   
   
