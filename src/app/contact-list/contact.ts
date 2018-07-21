@@ -1,5 +1,5 @@
 export class IContact {
-  id: number;
+  _id: string;
   name: string;
   email: string;
   tel: string;
@@ -8,7 +8,7 @@ export class IContact {
 
    constructor(id, name, email, tel, add, faceId) {
    
-   this.id=id;
+   this._id=id;
      this.name=name;
      this.email=email;
      this.tel=tel;
@@ -16,3 +16,4 @@ export class IContact {
      this.faceId=faceId;
    }
 }
+

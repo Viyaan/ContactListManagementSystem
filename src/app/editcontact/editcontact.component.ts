@@ -10,11 +10,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./editcontact.component.css']
 })
 export class EditcontactComponent implements OnInit {
-  public contactTel;
-  public contactEmail;
-  public contactName;
-  public contactAdd;
-  public face;
+
   
   public contact: IContact
 
@@ -25,20 +21,15 @@ export class EditcontactComponent implements OnInit {
     this._route
       .queryParams
       .subscribe((params) => {
-        this.contactTel = params['contactTel'];
-         this.contactEmail = params['contactEmail'];
-        this.contactName = params['contactName'];
-        this.contactAdd = params['address'];
-        this.face = params['face'];
-        this.contact = new IContact('',this.contactName,this.contactEmail,this.contactTel,this.contactAdd,this.face);
-
+        this.contact = new IContact(params['id'],params['contactName'],params['contactEmail'],params['contactTel'],params['address'],params['face']);
+ 
       }) 
   } 
   
   
   editUser(form:NgForm){
     console.log('contact '+this.contact);
-    this.userService.postUser(this.contact).subscribe( (data) => console.log('Success', data)
+    this.userService.putUser(this.contact).subscribe( (data) => console.log('Success', data)
                                                       ,(err) => console.log('Error', err));
    
   }

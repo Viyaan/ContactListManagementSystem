@@ -9,7 +9,6 @@ export class ContactlistService {
 
   private _contactListUrl = "https://contactlistmanagement.herokuapp.com/contacts";
 
-  private _deleteUrl = '';
 
   headers: Headers;
   options: RequestOptions;
@@ -32,9 +31,9 @@ export class ContactlistService {
   }
 
 
-  deleteContactWithId(key: string, val: number): Observable<any> {
+  deleteContactWithId(key: string, val: string): Observable<any> {
     return this._http
-      .delete(this._deleteUrl + "/?" + key + "=" + val, this.options)
+      .delete(this._contactListUrl + "/"+val, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }

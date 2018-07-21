@@ -7,27 +7,27 @@
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Edit Contact Info</h3>
     				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contactName"  #firstName="ngModel">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required [(ngModel)] = "contact.name"  #firstName="ngModel">
 						<div class ="alert alert-danger" *ngIf ="firstName.invalid">
 						First name is required
 						</div>
 					</div>
 					<div class="col-sm-100">
-						<img [src]=face  class="img-rounded" [alt]=contactName>
+						<img [src]=contact.faceId  class="img-rounded" [alt]="contact.name">
 					</div>
 					<br>
 					<div class="form-group">
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required  [(ngModel)] = "contactEmail" pattern ="[a-zA-Z0-10.%+-]+@[a-z0-9.-]+.[a-z]{2,5}" #email="ngModel">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email" required  [(ngModel)] = "contact.email" pattern ="[a-zA-Z0-10.%+-]+@[a-z0-9.-]+.[a-z]{2,5}" #email="ngModel">
 						<div class ="alert alert-danger" *ngIf ="email.invalid">
 						Enter valid email
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required [(ngModel)] = "contactTel">
+						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required [(ngModel)] = "contact.tel">
 					</div>
 					
                     <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Address" name="address" maxlength="140" rows="7" ngModel></textarea>
+                    <textarea class="form-control" type="textarea" id="message" placeholder="Address" name="address" maxlength="140" rows="7"  [(ngModel)] ="contact.add"></textarea>
                         <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
                     </div>
             

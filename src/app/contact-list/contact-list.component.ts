@@ -27,12 +27,13 @@ export class ContactListComponent implements OnInit {
   
 
   editContact(contact: IContact): void {
-    this._router.navigate(['edit'], { queryParams: { "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name, "address": contact.add,"face":contact.faceId} }); 
+    console.log(contact._id);
+    this._router.navigate(['edit'], { queryParams: { "id": contact._id, "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name, "address": contact.add,"face":contact.faceId} }); 
   }
 
   removeContact(contact: IContact):void{
 
-    this._contactService.deleteContactWithId("id",contact.id).subscribe((contacts) => this.contactLists = contacts, 
+    this._contactService.deleteContactWithId("id",contact._id).subscribe((contacts) => this.contactLists = contacts, 
                                                                      (error) => this.errorMessage = error);
   }
   

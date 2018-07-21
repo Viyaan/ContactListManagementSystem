@@ -10,11 +10,12 @@ export class UserformService {
 
   constructor(private http:Http) { }
   
-  postUrl:string ="/postUserInfo"
+  postUrl:string ="https://contactlistmanagement.herokuapp.com/contacts";
+  
   private extractData(res:Response){
     let body = res.json();
     return body.fields || { };
-    
+     
   }
   
   private handlerError(error: any){
@@ -28,6 +29,18 @@ export class UserformService {
     let headers = new Headers({'Content-Type':'application/json'});
     let options = new RequestOptions({headers:headers});
     return this.http.post(this.postUrl,body,options).map(this.extractData).catch(this.handlerError);
+  }
+  
+  
+    putUser(user: IContact):Observable<any>{ 
+    
+    console.log("user in service "+JSON.stringify(user));
+    let body = JSON.stringify(user);
+    let headers = new Headers({'Content-Type':'application/json'});
+    let options = new RequestOptions({headers:headers});
+      console.log(this.postUrl+"/"+user._id);
+      console.log(body);
+    return this.http.put(this.postUrl+"/"+user._id,body,options).map(this.extractData).catch(this.handlerError);
   }
 
 }

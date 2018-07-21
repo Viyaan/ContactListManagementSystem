@@ -21,6 +21,9 @@
                         <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
                             <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
                             <label class="name lead">{{contact.name}}</label>
+                            
+                            
+                             <input type="hidden" id="id" name="id" [(ngModel)] = "contact._id">
                             <br> 
                             <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" data-original-title="5842 Hillcrest Rd"></span>
                             <span class="text-muted">{{contact.add}}</span>
