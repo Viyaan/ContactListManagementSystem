@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class ContactlistService {
 
-  private _contactListUrl = "http://api-contact-manager.herokuapp.com/contacts";
+  private _contactListUrl = "https://contactlistmanagement.herokuapp.com/contacts";
 
   private _deleteUrl = '';
 
@@ -44,28 +44,5 @@ export class ContactlistService {
     let body = res.json();
     return body || {};
   }
-
-
-  getContactsNative(): IContact[] {
-    return [
-      {
-        'id': 1,
-        'name': 'Terrence S. Hatfield',
-        'tel': '651-603-1723',
-        'email': 'TerrenceSHatfield@rhyta.com',
-        "add": "address",
-        'faceId': ""
-      }, {
-        'id': 2,
-        'name': 'Chris M. Manning',
-        'tel': '513-307-5859',
-        'email': 'ChrisMManning@dayrep.com',
-        "add": "address",
-        'faceId': ""
-      }
-    ]
-  }
-
-
 
 }
