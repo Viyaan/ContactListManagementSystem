@@ -33,7 +33,7 @@ export class ContactListComponent implements OnInit {
 
   removeContact(contact: IContact):void{
 
-    this._contactService.deleteContactWithId("id",contact._id).subscribe((contacts) => this.contactLists = contacts, 
+    this._contactService.deleteContactWithId("id",contact._id).subscribe((contacts) => { this.contactLists = contacts, this._router.navigate(['/viewContacts'])},
                                                                      (error) => this.errorMessage = error);
   }
   

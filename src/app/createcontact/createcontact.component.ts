@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, NgForm, AbstractControl} from '@angular/forms';
 import {IContact} from '../contact-list/contact';
 import {UserformService} from '../editcontact/services/userform.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 function emailMatcher(c: AbstractControl) {
@@ -29,7 +30,7 @@ export class CreatecontactComponent implements OnInit {
   contact: IContact;
   emailMessage: string;
 
-  constructor(private fb: FormBuilder, private userService: UserformService) {}
+  constructor(private fb: FormBuilder, private userService: UserformService,private _router: Router) {}
 
   private validationMessage = {
     required: 'Please enter your email address',
@@ -65,7 +66,7 @@ export class CreatecontactComponent implements OnInit {
   save(form: NgForm) {
     console.log('Saved: ' + JSON.stringify(this.userForm.value));
     this.contact = new IContact('', this.userForm.value.firstName, this.userForm.value.emailGroup.email, this.userForm.value.tel, this.userForm.value.add, '');
-    this.userService.postUser(this.contact).subscribe((data) => console.log('Success', data)
+    this.userService.postUser(this.contact).subscribe((data) => {console.log('Success', data),this._router.navigate(['/viewContacts'])}
       , (err) => console.log('Error', err));
 
   }
