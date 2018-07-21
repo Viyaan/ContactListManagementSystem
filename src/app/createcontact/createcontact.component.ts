@@ -8,7 +8,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 function emailMatcher(c: AbstractControl) {
   let emailControl = c.get('email');
   let confirmControl = c.get('confirmEmail');
-  console.log(c.get('email'));
   if (emailControl.pristine || confirmControl.pristine) {
     return null;
   }
@@ -48,12 +47,14 @@ export class CreatecontactComponent implements OnInit {
       }, {Validators: emailMatcher}),
 
       tel: '',
-      add: ''
+      add: '',
+      faceId:''
+      
     })
     const emailControl = this.userForm.get('emailGroup.email');
     emailControl.valueChanges.subscribe(value => this.setMessage(emailControl));
   }
-
+ 
 
   setMessage(c: AbstractControl): void {
     this.emailMessage = "";
@@ -65,7 +66,7 @@ export class CreatecontactComponent implements OnInit {
 
   save(form: NgForm) {
     console.log('Saved: ' + JSON.stringify(this.userForm.value));
-    this.contact = new IContact('', this.userForm.value.firstName, this.userForm.value.emailGroup.email, this.userForm.value.tel, this.userForm.value.add, '');
+    this.contact = new IContact('', this.userForm.value.firstName, this.userForm.value.emailGroup.email, this.userForm.value.tel, this.userForm.value.add, this.userForm.value.faceId);
     this.userService.postUser(this.contact).subscribe((data) => {console.log('Success', data),this._router.navigate(['/viewContacts'])}
       , (err) => console.log('Error', err));
 
