@@ -16,6 +16,7 @@ import { EditcontactComponent } from './editcontact/editcontact.component';
 import {UserformService} from './editcontact/services/userform.service';
 import { CreatecontactComponent } from './createcontact/createcontact.component'
 import { PagerService } from './contact-list/pager.service';
+import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PagerService } from './contact-list/pager.service';
     InvalidloginComponent,
     ContactListComponent,
     EditcontactComponent,
-    CreatecontactComponent
+    CreatecontactComponent,
+    ContactFilterPipe
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([

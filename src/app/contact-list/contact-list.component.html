@@ -8,12 +8,18 @@
 								<i class="glyphicon glyphicon-plus"></i> Create User
 							</button>
   </div>
+  <br>
+  <div class="row">
+			<div class="col-md-4">
+			<input class="form-control" id="myInput" type="text" placeholder="Search name..." [(ngModel)]="filterContact" />
+			</div>
+		</div>
   </div>
-
+  <br>
     <div class="card card-default" id="card_contacts">
         <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
             <ul class="list-group pull-down" id="contact-list">
-                <li class="list-group-item" *ngFor="let contact of pagedItems">
+                <li class="list-group-item" *ngFor="let contact of pagedItems|contactFilter:filterContact">
                     <div class="row w-100">
                         <div class="col-12 col-sm-6 col-md-3 px-0">
                             <img [src]=contact.faceId [alt]=contact.name class="rounded-circle mx-auto d-block img-fluid">

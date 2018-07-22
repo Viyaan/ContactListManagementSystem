@@ -16,6 +16,7 @@ export class ContactListComponent implements OnInit {
   errorMessage: string;
   pager: any = {};
   pagedItems: any[];
+  filterContact ='';
 
   constructor(private _contactService: ContactlistService, private _router: Router,private _route: ActivatedRoute,private pagerService: PagerService) { }
 
