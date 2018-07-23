@@ -16,6 +16,7 @@ import { EditcontactComponent } from './editcontact/editcontact.component';
 import {UserformService} from './editcontact/services/userform.service';
 import { CreatecontactComponent } from './createcontact/createcontact.component'
 import { PagerService } from './contact-list/pager.service';
+import { AuthService } from './login/auth.service';
 import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
 
 @NgModule({
@@ -39,7 +40,7 @@ import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
 
     ])
   ],
-  providers: [ContactlistService,UserformService,PagerService],
+  providers: [ContactlistService,UserformService,PagerService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

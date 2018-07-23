@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from './auth.service';
+import {User} from '../login/user';
+
 
 @Component({
   selector: 'app-login',
@@ -7,29 +10,39 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  firstName:string;
-  password:string;
-  title:string
-  
-  
-  constructor( private _router: Router) {}
+
+  userName: string;
+  password: string;
+  title: string
+
+
+  constructor(private _router: Router, private auth: AuthService) {}
 
   ngOnInit() {
   }
-  
-  authenticate():void{
-    
-    console.log(this.firstName);
-    
-    if(this.firstName=="user"&&this.password=="password"){
-      console.log("success")
-       this._router.navigate(['viewContacts']);
-    }else{
-      console.log("failure")
-       this._router.navigate(['invalidPassword']);
+
+  loginUser(): void {
+
+    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => {
+      if (role === 'USER') {
+        this._router.navigate(['viewContacts'])
+      } else if (role === 'ADMIN') {
+        this._router.navigate(['viewUsers'])
+
+      }
     }
-    
+    , (err) => console.log('Error', err));
+
+
+
+    if (this.userName === "user" && this.password === "password") {
+      console.log("success")
+      this._router.navigate(['viewContacts']);
+    } else {
+      console.log("failure")
+      this._router.navigate(['invalidPassword']);
+    }
+
   }
 
 }
