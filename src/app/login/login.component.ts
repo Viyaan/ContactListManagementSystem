@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void {
 
-    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => { console.log(role)
+    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => { 
       if (role.userrole === 'USER') {
         this._router.navigate(['viewContacts'])
       } else if (role.userrole === 'ADMIN') {

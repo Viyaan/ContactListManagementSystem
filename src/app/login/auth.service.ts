@@ -25,8 +25,6 @@ export class AuthService {
     };
 
     let body = JSON.stringify(new User(username, password));
-
-    console.log(body);
     return this._http.post(this.postUrl, body, httpOptions).pipe(retry(3),
       catchError(this.handleError)
     );
