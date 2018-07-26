@@ -23,26 +23,15 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void {
 
-    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => {
-      if (role === 'USER') {
+    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => { console.log(role)
+      if (role.userrole === 'USER') {
         this._router.navigate(['viewContacts'])
-      } else if (role === 'ADMIN') {
+      } else if (role.userrole === 'ADMIN') {
         this._router.navigate(['viewUsers'])
-
+      }else if(role.message){
+         this._router.navigate(['invalidPassword'])
       }
     }
-    , (err) => console.log('Error', err));
-
-
-
-    if (this.userName === "user" && this.password === "password") {
-      console.log("success")
-      this._router.navigate(['viewContacts']);
-    } else {
-      console.log("failure")
-      this._router.navigate(['invalidPassword']);
-    }
-
+      , (err) => console.log('Error', err));
   }
-
 }

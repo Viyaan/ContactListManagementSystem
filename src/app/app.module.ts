@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; 
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -30,7 +31,7 @@ import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
     ContactFilterPipe
   ],
   imports: [
-    BrowserModule, CommonModule, FormsModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([
+    BrowserModule, CommonModule, FormsModule, HttpClientModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'viewContacts', component: ContactListComponent},
       {path: 'invalidPassword', component: InvalidloginComponent},
