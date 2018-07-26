@@ -43,7 +43,7 @@ export class AuthService {
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
-    return Observable.throw("Something bad happened; please try again later");
+    return Observable.throw("Something bad happened; please try again later, Also check your username or password");
   };
 
 }

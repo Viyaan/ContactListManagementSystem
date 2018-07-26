@@ -10,7 +10,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
-import { InvalidloginComponent } from './login/invalidlogin/invalidlogin.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import {ContactlistService} from './contact-list/contactlist.service';
 import { EditcontactComponent } from './editcontact/editcontact.component';
@@ -24,7 +23,6 @@ import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
   declarations: [
     AppComponent,
     LoginComponent,
-    InvalidloginComponent,
     ContactListComponent,
     EditcontactComponent,
     CreatecontactComponent,
@@ -34,7 +32,6 @@ import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
     BrowserModule, CommonModule, FormsModule, HttpClientModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'viewContacts', component: ContactListComponent},
-      {path: 'invalidPassword', component: InvalidloginComponent},
       {path: 'edit', component: EditcontactComponent,pathMatch: 'full'},
       {path: 'add', component: CreatecontactComponent},
       {path: '', redirectTo: 'login', pathMatch: 'full'},

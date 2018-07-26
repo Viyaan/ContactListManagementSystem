@@ -19,3 +19,8 @@
         font-size: 15px;
         font-weight: bold;
     }
+    
+    .invalid {
+    color: red;
+        font-weight: bold;
+}

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   userName: string;
   password: string;
   title: string
+  errorMessage: string
 
 
   constructor(private _router: Router, private auth: AuthService) {}
@@ -23,15 +24,21 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void {
 
-    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => { 
+    this.auth.getUserDetails(this.userName, this.password).subscribe((role) => {
       if (role.userrole === 'USER') {
         this._router.navigate(['viewContacts'])
       } else if (role.userrole === 'ADMIN') {
         this._router.navigate(['viewUsers'])
-      }else if(role.message){
-         this._router.navigate(['invalidPassword'])
+      } else if (role.message) {
+        this.errorMessage = role.message;
       }
     }
-      , (err) => console.log('Error', err));
+      , (err) => this.handleError(err));
   }
+
+  handleError(err: string): void {
+    this.errorMessage = err;
+  }
+
 }
+

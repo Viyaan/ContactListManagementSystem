@@ -1,5 +1,10 @@
 <form (submit)="loginUser($event)">
+
+
+
+
 <div class="login-form">
+ <div class ="invalid" *ngIf='errorMessage'>{{errorMessage}}</div>
 	<h2 class="text-center">Log in</h2>
 	<div class="form-group">
 		<input type="text" [(ngModel)]="userName" class="form-control" name="username"
