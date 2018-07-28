@@ -22,7 +22,12 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
      // this.contacts = this._contactService.getContactsNative();
-    this.contactLists = this._contactService.getContactsHttp().subscribe((contacts) => {this.contactLists = contacts, this.setPage(1);
+    this._contactService.getContactsHttp().subscribe((contacts) => {this.contactLists = contacts, this.setPage(1);
+                                                                     (error) => this.errorMessage = error });
+  }
+  
+  getContacts() {
+    this._contactService.getContactsHttp().subscribe((contacts) => {this.contactLists = contacts, this.setPage(1);
                                                                      (error) => this.errorMessage = error });
   }
   
@@ -34,8 +39,12 @@ export class ContactListComponent implements OnInit {
 
   removeContact(contact: IContact):void{
 
-   this.contactLists= this._contactService.deleteContactWithId("id",contact._id).subscribe((contacts) => { this.contactLists = contacts, this._router.navigate(['/viewContacts'])},
-                                                                     (error) => this.errorMessage = error);
+   this._contactService.deleteContactWithId("id",contact._id).subscribe((contacts) => {
+                                                                                       this.contactLists = contacts
+                                                                                       this.getContacts();
+                                                                                      },
+                                                                        (error) => this.errorMessage = error);
+    
   }
   
   
