@@ -28,7 +28,6 @@ export class EditcontactComponent implements OnInit {
 
 
   editUser(form: NgForm) {
-    console.log('contact ' + this.contact);
     this.userService.putUser(this.contact).subscribe((data) => {console.log('Success', data), this._router.navigate(['/viewContacts'])}
       , (err) => console.log('Error', err));
 

@@ -11,8 +11,7 @@ export class AuthService {
 
 
   postUrl: string = "https://contactlistmanagement.herokuapp.com/users/auth";
-
-
+  
   constructor(private _http: HttpClient) {}
 
   getUserDetails(username, password): Observable<any> {
@@ -45,5 +44,14 @@ export class AuthService {
     // return an observable with a user-facing error message
     return Observable.throw("Something bad happened; please try again later, Also check your username or password");
   };
+  
+  
+  loggedIn(){
+    return !!localStorage.getItem('token');
+  }
+  
+  getToken(){
+    return localStorage.getItem('token')
+  }
 
 }

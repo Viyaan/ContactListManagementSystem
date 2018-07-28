@@ -2,8 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 
@@ -17,6 +16,8 @@ import {UserformService} from './editcontact/services/userform.service';
 import { CreatecontactComponent } from './createcontact/createcontact.component'
 import { PagerService } from './contact-list/pager.service';
 import { AuthService } from './login/auth.service';
+import { AuthGuard } from './login/auth.guard';
+import { TokenInterceptorService } from './login/token-interceptor.service';
 import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
 
 @NgModule({
@@ -29,16 +30,20 @@ import { ContactFilterPipe } from './contact-list/contact-filter.pipe';
     ContactFilterPipe
   ],
   imports: [
-    BrowserModule, CommonModule, FormsModule, HttpClientModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot([
+    BrowserModule, CommonModule, FormsModule, HttpClientModule,  ReactiveFormsModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: 'viewContacts', component: ContactListComponent},
-      {path: 'edit', component: EditcontactComponent,pathMatch: 'full'},
-      {path: 'add', component: CreatecontactComponent},
-      {path: '', redirectTo: 'login', pathMatch: 'full'},
+      {path: 'viewContacts', component: ContactListComponent , canActivate: [AuthGuard]},
+      {path: 'edit', component: EditcontactComponent,pathMatch: 'full', canActivate: [AuthGuard]},
+      {path: 'add', component: CreatecontactComponent, canActivate: [AuthGuard]},
+      {path: '', redirectTo: 'login', pathMatch: 'full',canActivate: [AuthGuard]},
 
     ])
   ],
-  providers: [ContactlistService,UserformService,PagerService,AuthService],
+  providers: [ContactlistService,UserformService,PagerService,AuthService,AuthGuard,  {
+    provide : HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+   multi :true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

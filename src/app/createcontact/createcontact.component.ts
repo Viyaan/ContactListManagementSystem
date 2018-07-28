@@ -64,8 +64,7 @@ export class CreatecontactComponent implements OnInit {
     }
   }
 
-  save(form: NgForm) {
-    console.log('Saved: ' + JSON.stringify(this.userForm.value));
+  save(form: NgForm) { 
     this.contact = new IContact('', this.userForm.value.firstName, this.userForm.value.emailGroup.email, this.userForm.value.tel, this.userForm.value.add, this.userForm.value.faceId);
     this.userService.postUser(this.contact).subscribe((data) => {console.log('Success', data), this._router.navigate(['/viewContacts'])}
       , (err) => console.log('Error', err));
