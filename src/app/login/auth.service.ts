@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Injectable()
@@ -12,7 +13,7 @@ export class AuthService {
 
   postUrl: string = "https://contactlistmanagement.herokuapp.com/users/auth";
   
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient,private _router: Router) {}
 
   getUserDetails(username, password): Observable<any> {
 
@@ -52,6 +53,11 @@ export class AuthService {
   
   getToken(){
     return localStorage.getItem('token')
+  }
+  
+  logoutUser(){
+    localStorage.removeItem('token')
+    this._router.navigate(['login']);
   }
 
 }

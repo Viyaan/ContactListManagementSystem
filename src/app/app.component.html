@@ -1,3 +1,20 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Contact List Management System</a>
+    </div>
+    <ul class="nav navbar-nav">
+    
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class = "nav-link" *ngIf ="!auth.loggedIn()"><span class="glyphicon glyphicon-user" routerLinkActive="active"></span> Sign Up</a></li>
+      <li><a class = "nav-link" *ngIf ="!auth.loggedIn()" routerLink ="/login"><span class="glyphicon glyphicon-log-in" routerLinkActive="active"></span> Login</a></li>
+      <li><a class = "nav-link" style ="cursor.pointer" *ngIf ="auth.loggedIn()" (click) ="auth.logoutUser()" routerLink ="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div>
 <router-outlet></router-outlet>
 </div>
