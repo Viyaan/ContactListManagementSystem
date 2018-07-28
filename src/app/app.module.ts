@@ -20,6 +20,7 @@ import {AuthGuard} from './login/auth.guard';
 import {TokenInterceptorService} from './login/token-interceptor.service';
 import {ContactFilterPipe} from './contact-list/contact-filter.pipe';
 import {AboutComponent} from './about/about.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import {AboutComponent} from './about/about.component';
     EditcontactComponent,
     CreatecontactComponent,
     ContactFilterPipe,
-    AboutComponent
+    AboutComponent,
+    AdminUsersComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'about', component: AboutComponent},
       {path: 'viewContacts', component: ContactListComponent, canActivate: [AuthGuard]},
+      {path: 'viewUsers', component: AdminUsersComponent , canActivate: [AuthGuard]},
       {path: 'edit', component: EditcontactComponent, pathMatch: 'full', canActivate: [AuthGuard]},
       {path: 'add', component: CreatecontactComponent, canActivate: [AuthGuard]},
       {path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard]},
