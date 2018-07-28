@@ -1,23 +1,23 @@
-<form (submit)="loginUser($event)">
+<body class="text-center">
+<form class="modal-content animate" (submit)="loginUser($event)">
+      <img class="mb-4" src="http://bobbygeesdiner.com/images/contact.png">
 
-
-
-
-<div class="login-form">
- <div class ="invalid" *ngIf='errorMessage'>{{errorMessage}}</div>
-	<h2 class="text-center">Log in</h2>
-	<div class="form-group">
-		<input type="text" [(ngModel)]="userName" class="form-control" name="username"
-			placeholder="Username" required="required">
+	<div class="login-form">
+		<div class="invalid" *ngIf='errorMessage'>{{errorMessage}}</div>
+		<h2 class="text-center">Log in</h2>
+		<div class="form-group">
+			<input type="text" [(ngModel)]="userName" class="form-control"
+				name="username" placeholder="Username" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" [(ngModel)]="password" class="form-control"
+				name="password" placeholder="Password" minlength="3"
+				required="required">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary btn-block">Log
+				in</button>
+		</div>
 	</div>
-	<div class="form-group">
-		<input type="text" [(ngModel)]="password" class="form-control" name="password"
-			placeholder="Password" minlength="3" required="required">
-	</div>
-	<div class="form-group">
-		<button type="submit" class="btn btn-primary btn-block">Log in</button>
-	</div>
-	
-</div>
 </form>
-
+</body>
