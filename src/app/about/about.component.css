@@ -3,3 +3,18 @@
       height: 50%;
        margin: auto;
   }
+  
+  h1 {
+  font-family: sansita-one, sans-serif;
+  
+  }
+  
+  
+  p {
+  font-family: source-sans-pro, sans-serif;
+  
+  }
+  
+  body{
+  font-family: lobster-two, cursive
+  }
