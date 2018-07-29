@@ -21,6 +21,11 @@ import {TokenInterceptorService} from './login/token-interceptor.service';
 import {ContactFilterPipe} from './contact-list/contact-filter.pipe';
 import {AboutComponent} from './about/about.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminUserPipe } from './admin-users/admin-user.pipe';
+import {AdminUsersService} from './admin-users/admin-users.service';
+import {CreateAdminUsersService} from './create-admin-user/create-admin-users.service';
+
+import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,9 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     CreatecontactComponent,
     ContactFilterPipe,
     AboutComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    AdminUserPipe,
+    CreateAdminUserComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot([
@@ -42,10 +49,11 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
       {path: 'edit', component: EditcontactComponent, pathMatch: 'full', canActivate: [AuthGuard]},
       {path: 'add', component: CreatecontactComponent, canActivate: [AuthGuard]},
       {path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard]},
+      {path: 'addUser', component: CreateAdminUserComponent, canActivate: [AuthGuard]},
 
     ])
   ],
-  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, {
+  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, AdminUsersService,CreateAdminUsersService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
