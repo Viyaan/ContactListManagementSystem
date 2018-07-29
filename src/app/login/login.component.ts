@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from './auth.service';
-import {User} from '../login/user';
+import {User} from './user';
 import * as jwt_decode from "jwt-decode"; 
 
 
