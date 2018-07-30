@@ -26,6 +26,7 @@ import {AdminUsersService} from './admin-users/admin-users.service';
 import {CreateAdminUsersService} from './create-admin-user/create-admin-users.service';
 
 import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.component';
+import { EditAdminUsersComponent } from './edit-admin-users/edit-admin-users.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.
     AboutComponent,
     AdminUsersComponent,
     AdminUserPipe,
-    CreateAdminUserComponent
+    CreateAdminUserComponent,
+    EditAdminUsersComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot([
@@ -50,6 +52,7 @@ import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.
       {path: 'add', component: CreatecontactComponent, canActivate: [AuthGuard]},
       {path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard]},
       {path: 'addUser', component: CreateAdminUserComponent, canActivate: [AuthGuard]},
+      {path: 'editUser', component: EditAdminUsersComponent, canActivate: [AuthGuard]},
 
     ])
   ],

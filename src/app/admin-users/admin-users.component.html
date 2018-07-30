@@ -1,12 +1,12 @@
 
 <div class="container">
-    <!-- contacts card -->
+    <!-- users card -->
 <div class="jumbotron card bg-dark text-white bg-primary mb-3">
   <div >
    <h1>Admin Users</h1> 
   </div>
     <div class="row">
-  <button class="contact-action btn" [routerLink]= "['/addUser']">
+  <button class="user-action btn" [routerLink]= "['/addUser']">
 								<i class="glyphicon glyphicon-plus"></i> Create Admin or User
 							</button>
 			<div class="col-md-4">
@@ -15,9 +15,9 @@
 		</div>
   </div>
   
-    <div class="card card-default" id="card_contacts">
-        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
-            <ul class="list-group pull-down" id="contact-list">
+    <div class="card card-default" id="card_users">
+        <div id="users" class="panel-collapse collapse show" aria-expanded="true" style="">
+            <ul class="list-group pull-down" id="user-list">
                 <li class="list-group-item" *ngFor="let user of pagedItems|adminUser:filterAdminUser">
                     <div class="row w-100">
 
@@ -25,15 +25,16 @@
 
                             <span class="text-muted">{{user.username}}</span>
                             <br>
-                           
+                            <input type="hidden" id="id" name="id" [(ngModel)] = "user._id">
+                            <br> 
                             
                             <span class="text-muted small text-truncate">{{user.roles}}</span>
                             <div col-12 col-sm-6 col-md-3>
-                           	<button class="contact-action" >
+                           	<button class="user-action"  (click)="removeUser(user)" >
 								<i class="fa fa-trash"></i>
 							</button>
-								<button class="contact-action" >
-								<i class="fa fa-edit"></i>
+								<button class="user-action" (click)="editUser(user)">
+								<i class="fa fa-edit" ></i>
 							</button>
 							</div>
                         </div>
@@ -41,7 +42,7 @@
                 </li>
                
             </ul>
-            <!--/contacts list-->
+            <!--/users list-->
         </div>
          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
                 <li [ngClass]="{disabled:pager.currentPage === 1}">

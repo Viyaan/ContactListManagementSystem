@@ -2,6 +2,7 @@ import { PagerService } from '../contact-list/pager.service';
 import { IAdminUser } from './admin-users';
 import { AdminUsersService } from './admin-users.service';
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-users',
@@ -16,7 +17,7 @@ export class AdminUsersComponent implements OnInit {
   pagedItems: any[];
   filterAdminUser ='';
 
- constructor(private _userService: AdminUsersService, private pagerService: PagerService) { }
+ constructor(private _userService: AdminUsersService, private _router: Router,private _route: ActivatedRoute, private pagerService: PagerService) { }
 
   
 
@@ -26,9 +27,24 @@ export class AdminUsersComponent implements OnInit {
                                                                      (error) => this.errorMessage = error });
   }
   
-  getContacts() {
+  getUsers() {
     this._userService.getUsersHttp().subscribe((users) => {this.userLists = users, this.setPage(1);
                                                                      (error) => this.errorMessage = error });
+  }
+  
+   editUser(user: IAdminUser): void {
+    
+    this._router.navigate(['editUser'], { queryParams: { "id": user._id, "username": user.username , "password" : user.password, "roles": user.roles }}); 
+  }
+
+  removeUser(user: IAdminUser):void{
+
+   this._userService.deleteUserWithId("id",user._id).subscribe((users) => {
+                                                                                       this.userLists = users
+                                                                                       this.getUsers();
+                                                                                      },
+                                                                        (error) => this.errorMessage = error);
+    
   }
   
   setPage(page: number) {

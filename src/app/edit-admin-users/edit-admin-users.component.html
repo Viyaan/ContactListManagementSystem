@@ -1,0 +1,44 @@
+
+<div class="container callbackground">
+<div class="col-sm-8">
+
+    <div class="form-area">  
+        <form role="form" #form="ngForm" novalidate (submit)="editAdminUser(form)">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">Edit User Info</h3>
+    				<div class="form-group">
+						<input type="text" class="form-control" id="username" name="username" placeholder="username" required [(ngModel)] = "adminUser.username"  #username="ngModel">
+						<div class ="alert alert-danger" *ngIf ="username.invalid">
+						User name is required
+						</div>
+					</div>
+					
+					<br>
+
+					<div class="form-group">
+					<label>
+                        <input class="form-control" 
+                               id="rolesid" 
+                               type="radio" 
+                                name="roles"
+                                value="ADMIN"
+                               formControlName="roles" required [(ngModel)] = "adminUser.roles" #roles[0]="ngModel"/>ADMIN</label>
+                                <label>
+                        <input class="form-control" 
+                               id="rolesid" 
+                               type="radio" 
+                                name="roles"
+                                value="USER"
+                               formControlName="roles" required [(ngModel)] = "adminUser.roles" #roles[0]="ngModel"/>USER</label>
+						
+					</div>
+					
+                   
+        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Save User</button>
+        </form>
+    </div>
+</div>
+
+</div>
+
+ 
