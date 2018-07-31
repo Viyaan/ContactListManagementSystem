@@ -16,22 +16,12 @@
 					<br>
 
 					<div class="form-group">
-					<label>
-                        <input class="form-control" 
-                               id="rolesid" 
-                               type="radio" 
-                                name="roles"
-                                value="ADMIN"
-                               formControlName="roles" required [(ngModel)] = "adminUser.roles" />ADMIN</label>
-                                <label>
-                        <input class="form-control" 
-                               id="rolesid" 
-                               type="radio" 
-                                name="roles"
-                                value="USER"
-                               formControlName="roles" required [(ngModel)] = "adminUser.roles" />USER</label>
-						
+						<input type="text" class="form-control" id="roles" name="roles" placeholder="roles" required [(ngModel)] = "adminUser.roles"  #roles="ngModel">
+						<div class ="alert alert-danger" *ngIf ="roles.invalid">
+						roles is required
+						</div>
 					</div>
+					
 					
                    
         <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Save User</button>

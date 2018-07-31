@@ -17,7 +17,7 @@ export class EditAdminUsersComponent implements OnInit {
     this._route
       .queryParams
       .subscribe((params) => {
-        this.adminUser = new IAdminUser(params['_id'], params['username'], params['password'], params['roles']);
+        this.adminUser = new IAdminUser(params['id'], params['username'], params['password'], params['roles']);
 
       })
   }
