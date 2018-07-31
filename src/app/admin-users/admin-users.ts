@@ -2,7 +2,7 @@ export class IAdminUser {
   _id: string;
   username: string;
   password: string;
-  roles:string
+  roles:string;
 
    constructor(id, username, password, roles) {
      this._id=id;

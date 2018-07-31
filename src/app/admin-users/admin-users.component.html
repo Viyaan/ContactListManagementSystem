@@ -1,65 +1,55 @@
+<div class="jumbotron bg-dark text-white bg-primary mb-3">
+	<div>
+		<h1>Admin Users</h1>
+		<div class="col-md-4">
+			<input class="form-control" id="myInput" type="text"
+				placeholder="Search by name..." [(ngModel)]="filterAdminUser" /> 
+			<button class="user-action btn btn btn-primary" [routerLink]="['/addUser']">
+				
+			</button>
 
-<div class="container">
-    <!-- users card -->
-<div class="jumbotron card bg-dark text-white bg-primary mb-3">
-  <div >
-   <h1>Admin Users</h1> 
-  </div>
-    <div class="row">
-  <button class="user-action btn" [routerLink]= "['/addUser']">
-								<i class="glyphicon glyphicon-plus"></i> Create Admin or User
-							</button>
-			<div class="col-md-4">
-			<input class="form-control" id="myInput" type="text" placeholder="Search by name..." [(ngModel)]="filterAdminUser" />
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="column"
+		*ngFor="let user of pagedItems|adminUser:filterAdminUser">
+		<div class="card">
+
+			<img
+				src="https://www.shareicon.net/download/2016/04/14/492851_admin.ico">
+
+			<div class="container">
+				<h2>{{user.username}}</h2>
+				<p class="title">{{user.roles}}</p>
+				<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+				<p>example@example.com</p>
+
+				<p>
+					<button class="button" (click)="removeUser(user)">
+						<i class="fa fa-trash"></i>
+					</button>
+					<button class="button" (click)="editUser(user)">
+						<i class="fa fa-edit"></i>
+					</button>
+				</p>
 			</div>
 		</div>
-  </div>
-  
-    <div class="card card-default" id="card_users">
-        <div id="users" class="panel-collapse collapse show" aria-expanded="true" style="">
-            <ul class="list-group pull-down" id="user-list">
-                <li class="list-group-item" *ngFor="let user of pagedItems|adminUser:filterAdminUser">
-                    <div class="row w-100">
-
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-
-                            <span class="text-muted">{{user.username}}</span>
-                            <br>
-                            <input type="hidden" id="id" name="id" [(ngModel)] = "user._id">
-                            <br> 
-                            
-                            <span class="text-muted small text-truncate">{{user.roles}}</span>
-                            <div col-12 col-sm-6 col-md-3>
-                           	<button class="user-action"  (click)="removeUser(user)" >
-								<i class="fa fa-trash"></i>
-							</button>
-								<button class="user-action" (click)="editUser(user)">
-								<i class="fa fa-edit" ></i>
-							</button>
-							</div>
-                        </div>
-                    </div>
-                </li>
-               
-            </ul>
-            <!--/users list-->
-        </div>
-         <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(1)">First</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-                </li>
-                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                    <a (click)="setPage(page)">{{page}}</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.totalPages)">Last</a>
-                </li>
-            </ul>
-    </div>
+	</div>
 </div>
+
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(1)">First</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === 1}"><a
+		(click)="setPage(pager.currentPage - 1)">Previous</a></li>
+	<li *ngFor="let page of pager.pages"
+		[ngClass]="{active:pager.currentPage === page}"><a
+		(click)="setPage(page)">{{page}}</a></li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.currentPage + 1)">Next</a>
+	</li>
+	<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+		<a (click)="setPage(pager.totalPages)">Last</a>
+	</li>
+</ul>
