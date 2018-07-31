@@ -1,0 +1,11 @@
+body {
+   background-image: url("https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-2/512/add_user_group-512.png");
+   background-color: #cccccc;
+   height: 100%;
+}
+
+html {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}

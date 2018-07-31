@@ -49,6 +49,11 @@ html {
 
 }
 
+img {
+    border-radius: 50%;
+}
+
+
 .button:hover {
   background-color: #555;
 }
