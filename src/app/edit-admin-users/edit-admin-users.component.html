@@ -5,12 +5,10 @@
     <div class="form-area">  
         <form role="form" #form="ngForm" novalidate (submit)="editAdminUser(form)">
         <br style="clear:both">
-                    <h3 style="margin-bottom: 25px; text-align: center;">Edit User Info</h3>
+                    <h3 style="margin-bottom: 25px; text-align: center;" class="w3-allerta w3-xxxlarge" >Update User Role</h3>
     				<div class="form-group">
-						<input type="text" class="form-control" id="username" name="username" placeholder="username" required [(ngModel)] = "adminUser.username"  #username="ngModel">
-						<div class ="alert alert-danger" *ngIf ="username.invalid">
-						User name is required
-						</div>
+						
+						<h1><span class="w3-allerta">{{adminUser.username}}</span></h1>
 					</div>
 					
 					<br>
