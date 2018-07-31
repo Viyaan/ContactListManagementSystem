@@ -57,3 +57,7 @@ img {
 .button:hover {
   background-color: #555;
 }
+
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
