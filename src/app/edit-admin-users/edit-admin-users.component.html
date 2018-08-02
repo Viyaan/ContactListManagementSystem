@@ -1,32 +1,40 @@
 
 <div class="container callbackground">
-<div class="col-sm-8">
-<img src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/user_edit.png">
-    <div class="form-area">  
-        <form role="form" #form="ngForm" novalidate (submit)="editAdminUser(form)">
-        <br style="clear:both">
-                    <h3 style="margin-bottom: 25px; text-align: center;" class="w3-allerta w3-xxxlarge" >Update User Role</h3>
-    				<div class="form-group">
-						
-						<h1><span class="w3-allerta">{{adminUser.username}}</span></h1>
-					</div>
-					
-					<br>
+	<div class="col-sm-8">
+		<img
+			src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/user_edit.png">
+		<div class="form-area">
+			<form role="form" #form="ngForm" novalidate
+				(submit)="editAdminUser(form)">
+				<br style="clear: both">
+				<h3 style="margin-bottom: 25px; text-align: center;"
+					class="w3-allerta w3-xxxlarge">Update User Role</h3>
+				<div class="form-group">
 
-					<div class="form-group">
-						<input type="text" class="form-control" id="roles" name="roles" placeholder="roles" required [(ngModel)] = "adminUser.roles"  #roles="ngModel">
-						<div class ="alert alert-danger" *ngIf ="roles.invalid">
-						roles is required
-						</div>
-					</div>
-					
-					
-                   
-        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Save User</button>
-        </form>
-    </div>
+					<h1>
+						<span class="w3-allerta">{{adminUser.username}}</span>
+					</h1>
+				</div>
+
+				<br>
+
+				<div>
+					<label>Role: </label> <select class='select-option' required
+						name="role" [(ngModel)]='adminUser.roles'
+						(ngModelChange)='onRoleSelected($event)'>
+
+						<option *ngFor="let role of userRoles">{{role}}</option>
+					</select>
+				</div>
+
+				
+
+
+
+				<button type="submit" id="submit" name="submit"
+					class="btn btn-primary pull-right">Save User</button>
+			</form>
+		</div>
+	</div>
 </div>
 
-</div>
-
- 
