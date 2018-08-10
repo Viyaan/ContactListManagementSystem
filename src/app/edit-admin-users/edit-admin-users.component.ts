@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { IAdminUser } from '../admin-users/admin-users';
 import {CreateAdminUsersService} from '../create-admin-user/create-admin-users.service';
 import {NgForm} from '@angular/forms';
+import {UserDataService} from '../shared/user.datashare.service';
 
 @Component({
     selector: 'app-edit-admin-users',
@@ -16,16 +17,12 @@ export class EditAdminUsersComponent implements OnInit {
     userRoles = ["USER","ADMIN"];
     roleSelected: any;
 
-    constructor(private _route: ActivatedRoute, private _router: Router, private adminUsersService: CreateAdminUsersService) { }
+    constructor(private _route: ActivatedRoute, private _router: Router, private adminUsersService: CreateAdminUsersService, private data:UserDataService) { }
 
     ngOnInit() {
-        this._route
-            .queryParams
-            .subscribe((params) => {
-                this.adminUser = new IAdminUser(params['id'], params['username'], params['password'], params['roles']);
 
-            })
-        
+        this.data.currentMessage.subscribe(adminUser => this.adminUser = adminUser)
+   
         
     }
     editAdminUser(form: NgForm) {

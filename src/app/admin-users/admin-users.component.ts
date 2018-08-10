@@ -3,6 +3,7 @@ import { IAdminUser } from './admin-users';
 import { AdminUsersService } from './admin-users.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserDataService} from '../shared/user.datashare.service';
 
 @Component({
   selector: 'app-admin-users',
@@ -17,7 +18,7 @@ export class AdminUsersComponent implements OnInit {
   pagedItems: any[];
   filterAdminUser ='';
 
- constructor(private _userService: AdminUsersService, private _router: Router,private _route: ActivatedRoute, private pagerService: PagerService) { }
+ constructor(private _userService: AdminUsersService, private _router: Router,private _route: ActivatedRoute, private pagerService: PagerService,private data: UserDataService) { }
 
   
 
@@ -34,7 +35,8 @@ export class AdminUsersComponent implements OnInit {
   
    editUser(user: IAdminUser): void {
     
-    this._router.navigate(['editUser'], { queryParams: { "id": user._id, "username": user.username , "password" : user.password, "roles": user.roles }}); 
+    this.data.changeMessage(new IAdminUser(user._id, user.username,user.password, user.roles));
+    this._router.navigate(['editUser']); 
   }
 
   removeUser(user: IAdminUser):void{

@@ -27,7 +27,8 @@ import {CreateAdminUsersService} from './create-admin-user/create-admin-users.se
 
 import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.component';
 import { EditAdminUsersComponent } from './edit-admin-users/edit-admin-users.component';
-import{DataService} from './shared/data.share';
+import {DataService} from './shared/data.share';
+import {UserDataService} from './shared/user.datashare.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import{DataService} from './shared/data.share';
 
     ])
   ],
-  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, AdminUsersService,CreateAdminUsersService, DataService,{
+  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, AdminUsersService,CreateAdminUsersService, DataService,UserDataService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
