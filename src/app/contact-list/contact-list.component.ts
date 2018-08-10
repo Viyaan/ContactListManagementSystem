@@ -4,6 +4,7 @@ import {ContactlistService} from './contactlist.service';
 import { Observable } from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import { PagerService } from './pager.service';
+import { DataService } from "../shared/data.share";
 
 @Component({
   selector: 'app-contact-list',
@@ -17,8 +18,9 @@ export class ContactListComponent implements OnInit {
   pager: any = {};
   pagedItems: any[];
   filterContact ='';
+  contact:IContact;
 
-  constructor(private _contactService: ContactlistService, private _router: Router,private _route: ActivatedRoute,private pagerService: PagerService) { }
+  constructor(private _contactService: ContactlistService, private _router: Router,private _route: ActivatedRoute,private pagerService: PagerService,private data: DataService) { }
 
   ngOnInit(): void {
      // this.contacts = this._contactService.getContactsNative();
@@ -33,8 +35,9 @@ export class ContactListComponent implements OnInit {
   
 
   editContact(contact: IContact): void {
-    
-    this._router.navigate(['edit'], { queryParams: { "id": contact._id, "contactTel": contact.tel , "contactEmail" : contact.email, "contactName": contact.name, "address": contact.add,"face":contact.faceId} }); 
+    this.data.changeMessage(new IContact(contact._id, contact.name,contact.email,contact.tel,contact.add,contact.faceId));
+
+    this._router.navigate(['edit']); 
   }
 
   removeContact(contact: IContact):void{

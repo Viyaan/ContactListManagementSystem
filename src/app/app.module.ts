@@ -27,6 +27,7 @@ import {CreateAdminUsersService} from './create-admin-user/create-admin-users.se
 
 import { CreateAdminUserComponent } from './create-admin-user/create-admin-user.component';
 import { EditAdminUsersComponent } from './edit-admin-users/edit-admin-users.component';
+import{DataService} from './shared/data.share';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EditAdminUsersComponent } from './edit-admin-users/edit-admin-users.com
     AdminUserPipe,
     CreateAdminUserComponent,
     EditAdminUsersComponent
+    
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot([
@@ -56,7 +58,7 @@ import { EditAdminUsersComponent } from './edit-admin-users/edit-admin-users.com
 
     ])
   ],
-  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, AdminUsersService,CreateAdminUsersService, {
+  providers: [ContactlistService, UserformService, PagerService, AuthService, AuthGuard, AdminUsersService,CreateAdminUsersService, DataService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

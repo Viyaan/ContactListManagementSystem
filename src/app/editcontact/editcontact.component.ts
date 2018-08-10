@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {IContact} from '../contact-list/contact';
 import {UserformService} from '../editcontact/services/userform.service';
 import {NgForm} from '@angular/forms';
+import { DataService } from "../shared/data.share";
 
 @Component({
   selector: 'app-editcontact',
@@ -14,16 +15,12 @@ export class EditcontactComponent implements OnInit {
 
   public contact: IContact
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private userService: UserformService) {}
+  constructor(private _route: ActivatedRoute, private _router: Router, private userService: UserformService,private data: DataService) {}
 
   ngOnInit() {
 
-    this._route
-      .queryParams
-      .subscribe((params) => {
-        this.contact = new IContact(params['id'], params['contactName'], params['contactEmail'], params['contactTel'], params['address'], params['face']);
-
-      })
+    this.data.currentMessage.subscribe(contact => this.contact = contact)
+   
   }
 
 
